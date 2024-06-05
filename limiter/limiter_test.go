@@ -9,7 +9,7 @@ import (
 )
 
 func setupRedisTestClient() *RedisClient {
-	client := NewRedisClient("localhost:6379")
+	client := NewRedisClient("redis:6379")
 	return client
 }
 

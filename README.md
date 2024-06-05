@@ -8,26 +8,22 @@ Create a .env file at the root of the project with the following variables:
 RATE_LIMIT_PER_IP=10
 RATE_LIMIT_PER_TOKEN=100
 BLOCK_DURATION=5m
-REDIS_ADDR=localhost:6379
+REDIS_ADDR=redis:6379
 ```
 
-To start Redis with Docker, run:
-```sh
-docker-compose up -d
-```
 To run the server, execute:
 ```sh
-go run main.go
+docker-compose up --build
 ```
-Then run the tests with the command:
+To run the tests, execute:
 ```sh
-go test ./limiter -v
+docker-compose run --rm tests
 ```
 
 ## Manual Testing
 1. Start the server
     ```sh
-    go run main.go
+    docker-compose up --build
     ```
 2. Test the rate limit without using a token, considering we set a limit of 10 requests in the environment variables:
     ```sh

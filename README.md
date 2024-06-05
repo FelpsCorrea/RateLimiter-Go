@@ -13,17 +13,17 @@ REDIS_ADDR=redis:6379
 
 To run the server, execute:
 ```sh
-docker-compose up --build
+docker-compose up --build -d
 ```
 To run the tests, execute:
 ```sh
-docker-compose run --rm tests
+docker-compose run --rm rate-limiter-tests
 ```
 
 ## Manual Testing
 1. Start the server
     ```sh
-    docker-compose up --build
+    docker-compose up --build -d
     ```
 2. Test the rate limit without using a token, considering we set a limit of 10 requests in the environment variables:
     ```sh

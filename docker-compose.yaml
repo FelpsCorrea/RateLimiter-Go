@@ -10,7 +10,9 @@ services:
       - rate-limiter-network
 
   rate-limiter:
-    build: .
+    build:
+      context: .
+      target: builder
     container_name: rate-limiter
     environment:
       - REDIS_URL=redis:6379
@@ -20,8 +22,9 @@ services:
       - "8080:8080"
     networks:
       - rate-limiter-network
+    command: ["./main"]
 
-  tests:
+  rate-limiter-tests:
     build:
       context: .
       target: tester
